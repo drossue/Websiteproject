@@ -1,0 +1,945 @@
+/* Import Lora from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+/* Define Aileron font */
+@font-face {
+    font-family: 'Aileron';
+    src: url('fonts/Aileron-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+
+
+@font-face {
+    font-family: 'Aileron';
+    src: url('fonts/Aileron-Bold.ttf') format('truetype');
+    font-weight: 700;
+}
+
+
+/* Reset html and body */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Aileron', sans-serif;
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+}
+
+
+/* Background image with dark overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+
+/* Navbar styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    height: 60px;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+
+
+.navbar.scrolled {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    font-weight: normal;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    margin: 0 20px; /* Adds space between each word/link */
+}
+
+
+.navbar a:hover {
+    color: #ffd700;
+}
+
+
+.navbar-center {
+    font-size: 1.8rem;
+    font-family: 'Lora', serif;
+    font-weight: normal;
+    color: white;
+}
+
+
+/* Donate button styling */
+.donate-button {
+    padding: 8px 16px;
+    background-color: #e6b800;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-left: 20px;
+}
+
+
+.donate-button:hover {
+    background-color: #ffd700;
+    transform: scale(1.05);
+}
+
+
+/* Fade-in Animation */
+.fade-in-text {
+    font-family: Arial;
+    font-size: 60px;
+    color: white;
+    opacity: 0; /* Start fully transparent */
+    animation: fadeIn 5s forwards; /* 'forwards' keeps the final state (opacity: 1) */
+}
+
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+
+/* Other vendor-specific keyframes (if needed) */
+@-moz-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+
+@-webkit-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+
+@-o-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+
+@-ms-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+
+/* Hero Section */
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    height: 100vh; /* Full viewport height */
+    padding: 0 10% 5%; /* Add space on the left and bottom */
+    text-align: left; /* Left-align the text */
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url('dogbackground.png') no-repeat center center / cover;
+    position: relative;
+}
+
+
+.hero-content {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: flex-start; /* Align content to the left */
+    gap: 20px; /* Add spacing between h1 and button */
+}
+
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-family: 'Lora', serif; /* Use Lora font for headings */
+    font-weight: 400;
+    color: white;
+    line-height: 1.4;
+    margin: 0;
+    /* Removed fade-in animation */
+}
+
+
+.hero .btn {
+    position: relative;
+    width: 180px;
+    height: 60px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    border: 2px solid #ffd700; /* Gold border */
+    color: white; /* White text for visibility */
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 60px; /* Center text vertically */
+    overflow: hidden; /* Prevent overflow from SVG animations */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+
+.hero .btn span {
+    position: relative;
+    opacity: 1; /* Fully visible text */
+}
+
+
+.hero .btn:hover {
+    background-color: #ffd700; /* Gold background on hover */
+    color: black; /* Black text for contrast */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+
+/* SVG Styling for Border Animation */
+.hero .btn svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: #ffd700; /* Gold stroke for the SVG lines */
+    stroke-width: 1;
+    stroke-dasharray: 260; /* Set the total stroke length */
+    stroke-dashoffset: 270; /* Initially hide the stroke */
+    transition: stroke-dashoffset 0.5s ease-in-out; /* Smooth animation */
+    z-index: 1; /* Ensure it’s below the text but above the background */
+}
+
+
+/* Animate SVG stroke on hover */
+.hero .btn:hover svg {
+    stroke-dashoffset: 0; /* Reveal the border animation */
+}
+
+
+/* Subtle background glow on hover */
+.hero .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 0; /* Ensure it stays behind text and SVG */
+    opacity: 0;
+    transition: opacity 0.3s ease; /* Smooth fade-in */
+}
+
+
+.hero .btn:hover::before {
+    opacity: 1; /* Glow effect on hover */
+}
+
+
+
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+
+    .hero .btn {
+        width: 150px;
+        height: 50px;
+        line-height: 50px;
+    }
+
+
+    .hero .btn span {
+        font-size: 14px;
+    }
+}
+
+/* Services Section Styling */
+.services {
+  display: flex;
+  flex-direction: column; /* Stack everything vertically */
+  align-items: center; /* Horizontally center everything */
+  padding: 50px 10%; /* Add padding for layout */
+  background-color: #ffffff; /* White background for the section */
+  border-top: 1px solid #ddd; /* Optional border to separate from previous section */
+  border-bottom: 1px solid #ddd; /* Optional border for separation */
+}
+
+/* Centered Heading for 'Our Services' */
+.services-heading {
+  font-family: 'Aileron', sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 30px; /* Space below the heading */
+  color: #333; /* Dark gray text for visibility */
+  text-align: center; /* Ensure it's centered */
+  width: 100%; /* Make sure it takes full width */
+}
+
+/* Services Content */
+.services-content {
+  display: flex; /* Use flexbox for service boxes */
+  justify-content: center; /* Center the service boxes */
+  gap: 20px; /* Space between the service boxes */
+  flex-wrap: wrap; /* Allow wrapping for responsiveness */
+  width: 100%; /* Ensure content stretches full width */
+}
+
+/* Individual Service Box */
+.service-box {
+  flex: 1; /* Allow items to grow and take equal width */
+  max-width: 300px; /* Set max width for each service box */
+  padding: 30px 15px; /* Add padding around each column */
+  display: flex; /* Make the service box a flex container */
+  flex-direction: column; /* Stack the contents vertically */
+  justify-content: center; /* Vertically center content */
+  align-items: center; /* Horizontally center content */
+  text-align: center; /* Center the text within each box */
+}
+
+/* SVG Icon Styling */
+.service-svg {
+  width: 65px; /* Adjust the size of the SVG */
+  height: 65px; /* Ensure it's a square icon for better alignment */
+  margin-bottom: 25px; /* Space below the icon */
+}
+
+/* Service Heading */
+.service-box h3 {
+  font-family: 'Lora', serif; /* Use Lora font */
+  font-size: 2rem;
+  margin: 15px 0; /* Add spacing around the heading */
+  color: #333; /* Dark gray text for good contrast */
+}
+
+/* Service Paragraph */
+.service-box p {
+  font-family: 'Aileron', sans-serif; /* Use Aileron font */
+  font-size: 1.1rem;
+  color: #555; /* Dark gray text for readability */
+  line-height: 1.6;
+  margin-bottom: 20px; /* Space below the paragraph */
+}
+
+/* Media Query for Responsiveness */
+@media (max-width: 768px) {
+  .services-content {
+      flex-direction: column; /* Stack columns vertically on smaller screens */
+      align-items: center; /* Center-align stacked items */
+  }
+
+  .service-box {
+      max-width: 100%; /* Let columns take full width */
+  }
+}
+
+
+.meet-pups {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #36454F; /* Dark background for contrast */
+    color: #fff; /* White text */
+}
+
+
+.meet-pups h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+    font-family: 'Aileron', sans-serif;
+}
+
+
+.pups-gallery {
+    display: flex;
+    flex-wrap: wrap; /* Wrap items onto the next row if necessary */
+    justify-content: center; /* Center all items */
+    gap: 30px; /* Space between items */
+}
+
+
+.pup {
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px; /* Fixed width for consistent layout */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.pup:hover {
+    transform: translateY(-5px); /* Lift the card slightly on hover */
+}
+
+
+.pup img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    filter: grayscale(1); /* Start with grayscale */
+    transition: transform 0.3s ease, filter 0.3s ease; /* Smooth hover animation */
+    cursor: pointer;
+}
+
+
+.pup img:hover {
+    transform: rotate(1deg) scale(1.01); /* Slight rotation and scaling */
+    filter: grayscale(0); /* Remove grayscale on hover */
+}
+
+
+.pup h3 {
+    margin: 10px 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+
+.pup p {
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: left; /* Align text to the left for readability */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+.team-section {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #fff;
+}
+
+.team-section h2 {
+  font-size: 2rem;
+  margin-bottom: 50px;
+  color: black;
+}
+
+.team-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.team-member {
+  text-align: center;
+  background-color: rgb(239, 246, 248);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 250px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: border 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effect */
+  border: 4px solid transparent; /* Initial border */
+}
+
+.team-member:hover {
+  border: 4px solid #d3cbf8; /* Highlight border on hover */
+  transform: scale(1.05); /* Slightly enlarge the card */
+}
+
+.member-image img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.team-member h3 {
+  font-size: 1.25rem;
+  margin: 15px 0 5px;
+  color: black;
+}
+
+.team-member .position {
+  font-size: 1rem;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 10px;
+}
+
+.team-member p {
+  font-size: 1rem;
+  color: black;
+  margin-bottom: 15px;
+}
+
+.social-icons a {
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.social-icons img {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s ease;
+}
+
+.social-icons a:hover img {
+  transform: scale(1.2);
+}
+
+/* Mission Section Styling */
+.cover {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.cover img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.cover-text {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 30%;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: justify;
+}
+
+.cover-text h2 {
+  font-family: 'Aileron', sans-serif;
+  font-size: 35px;
+  color: whitesmoke;
+  text-align: center;
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Spacing between text and icon */
+}
+
+.cover-text p {
+  margin-bottom: 20px;
+  text-align: justify;
+  color: whitesmoke;
+  font-family: 'Aileron', sans-serif;
+  font-size: 18px;
+}
+
+.cover-text .paw-icon {
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+}
+
+/* Footer Styling */
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-left {
+  font-family: 'Lora', serif;
+  font-size: 18px;
+}
+
+.footer-left-links a,
+.footer-right-links a {
+  color: white;
+  text-decoration: none;
+  margin-right: 15px;
+}
+
+.footer-left-links a:hover,
+.footer-right-links a:hover {
+  text-decoration: underline;
+}
+
+
+/* Quote Section */
+.quote-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    background-color: #f5f5f5;
+}
+
+
+.quote-content {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    gap: 50px;
+}
+
+
+.quote-image img {
+    width: 100%;
+    border-radius: 10px;
+    flex: 1;
+}
+
+
+.quote-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.quote-text blockquote {
+    font-size: 1.8rem;
+    margin: 0 0 10px;
+    font-style: italic;
+    color: #333;
+}
+
+
+.quote-text p {
+    font-size: 1rem;
+    margin: 0;
+    color: #777;
+}
+
+
+/* Call-to-Action Section */
+.cta-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+
+.cta-content {
+    max-width: 800px;
+}
+
+
+.cta-content h1 {
+    font-size: 2.5rem;
+    margin: 0 0 20px;
+}
+
+
+.cta-button {
+    background-color: #ffd700;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #333;
+    font-weight: bold;
+}
+
+
+.cta-button:hover {
+    background-color: #ffc107;
+}
+
+
+/* blog diri */
+.blog {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #fff;
+    color: #000;
+  }
+ 
+  .blog h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+ 
+  .blog-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+ 
+  .blog-post {
+    width: 300px;
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+  }
+ 
+  .blog-post img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+ 
+  .blog-post p {
+    font-size: 0.9rem;
+    color: #999;
+  }
+ 
+  .blog-post h3 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    font-weight: 700;
+  }
+ 
+  .blog-post a {
+    text-decoration: none;
+    color: #B98A81;
+    font-weight: 500;
+    margin-top: 10px;
+    display: inline-block;
+  }
+ 
+  /* Story Content Section */
+  .story-content {
+    text-align: center;
+    padding: 50px 20px;
+  }
+ 
+  .story-content h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: black;
+  }
+ 
+  .story-content img {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+    border-radius: 0;
+  }
+ 
+  .story-content p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 20px auto;
+    color: #000;
+    text-align: justify;
+  }
+ 
+  .story-content .dog-name {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-top: 10px;
+  }
+ 
+  /* Story Navigation Section */
+  .next-story {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding: 0 20px; /* Adjust padding to add space on left and right edges */
+  }
+
+/* Section containing all the donate content */
+.donate-section {
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space between the content and images */
+  align-items: center; /* Vertically center the content */
+  color: black; /* Ensure text is white */
+  padding: 40px;
+  margin: 20px auto;
+  max-width: 90%;
+}
+
+/* Style for the "Scan me" text */
+.scan-text {
+  text-align: center;
+  font-size: 1rem;
+  color:black;
+  margin-top: 10px; /* Adds some space between the QR code and the text */
+}
+
+.donate-content {
+  max-width: 45%;
+  margin-right: 20px;
+}
+
+.donate-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.donate-content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.qr-code {
+  text-align: center; /* Centers the QR code */
+}
+
+.qr-code-image {
+  width: 140px; /* Adjust the size of the QR code */
+  height: 140px;
+}
+
+
+/* Styles for the slider */
+.slider-container {
+  position: relative;
+  width: 60%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slider-image {
+  width: 100%;
+  height: auto;
+}
+
+.prev-btn, .next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.prev-btn {
+  left: 10px;
+}
+
+.next-btn {
+  right: 10px;
+}
+
+ 
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .donate-section {
+      flex-direction: column;
+      padding: 20px;
+    }
+ 
+    .donate-content, .slider-container {
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+ 
+    .donate-content {
+      text-align: center;
+    }
+  }
+ 
+  @media (max-width: 480px) {
+    .donate-content h2 {
+      font-size: 2rem;
+    }
+ 
+    .donate-content p {
+      font-size: 1rem;
+    }
+ 
+    .slider-container {
+      width: 100%;
+      max-width: 300px; /* Scale down for smaller screens */
+    }
+  }
+
+
+  .footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  background-color: #fff;
+  color: #000;
+  font-weight: 400;
+}
+
+
+.footer-left {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+
+.footer-left-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+
+
+.footer-right-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: right;
+}
+
+
+.footer a {
+  text-decoration: none;
+  color: #000;
+  font-size: 1rem;
+  text-decoration: underline;
+}
